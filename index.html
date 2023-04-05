@@ -1,0 +1,155 @@
+<script>
+///////Exercicio Agenda////////
+// Vamos exercitar um pouco mais.
+
+//Crie um sistema de agenda onde seja possível:
+// - Agendar um compromisso em uma determinada data;
+// - Agendar um horário para esse compromisso;
+// - Fazer uma descrição para o compromisso;
+// - Realizar um cancelamento de compromisso agendado;
+// - Visualizar todos os compromissos agendados (de preferencia podendo selecionar a data que deseja visualizar);
+
+
+// As estruturas que serão utilizadas fica a critério de vocês;
+
+// Existe uma estrutura chamada JSON que para quem compreendeu o uso do LocalStorage, fica mais fácil de comunicar;
+/////////////////////////////// 
+var datas=[];
+var compri={};
+controle=1
+var auxiliar=0;
+
+function TUDO(){
+do{
+    opçoes=prompt("O que você deseja fazer hoje?\n1-Agendar um novo comprimisso.\n2-Ver compromissos.\n3-Excluir um compromisso.\n4-Apagar todos os compromissos.\n5-Fechar Agenda.");
+    if(opçoes==1){
+    AGENDA()
+    }else if(opçoes==2){
+    VER_COMPROMISSO()
+    }else if(opçoes==3){
+    EXCLUIR_1_COMPROMISSO()
+    }else if(opçoes==4){
+    DELETAR_TUDO()
+    }else if(opçoes==5){
+    alert("Agenda Finalizada com sucesso.")
+    controle=0
+    }
+}while(controle!=0)
+};
+
+function AGENDA(){
+    var compri = new Object()
+    compri.dia=prompt("Qual dia deseja agendar?\nSó pode ter 10 compromissos!");
+    compri.hora=prompt("Digite qual horário é essse compromisso");
+    compri.descricao=prompt("Digite qual será a descrição desse compromisso.");
+    datas.push(compri);
+    localStorage.setItem(auxiliar,JSON.stringify(datas));
+    auxiliar++;
+    do{
+        elseresposta=prompt("Deseja agendar mais algum compromisso?\nDigite 1 para sim e 2 para não.")
+        if(elseresposta==1){
+            controle=1
+            AGENDA()
+        }else if(elseresposta==2){
+            controle=1
+            TUDO()
+        }
+    }while(controle!=0)
+};
+
+function VER_COMPROMISSO(){
+    pergunta=+prompt("Deseja ver qual compromisso?\nDigite o número dele.");
+    switch(pergunta){
+        case 1:
+            b=JSON.stringify(JSON.parse(localStorage.getItem("0")), null, 4)
+            alert(b)
+            break;
+        case 2:
+            b=JSON.stringify(JSON.parse(localStorage.getItem("1")), null, 4)
+            alert(b)
+            break;
+        case 3:
+            b=JSON.stringify(JSON.parse(localStorage.getItem("2")), null, 4)
+            alert(b)
+            break;
+        case 4:
+            b=JSON.stringify(JSON.parse(localStorage.getItem("3")), null, 4)
+            alert(b)
+            break;
+        case 5:
+            b=JSON.stringify(JSON.parse(localStorage.getItem("4")), null, 4)
+            alert(b)
+            break;
+        case 6:
+            b=JSON.stringify(JSON.parse(localStorage.getItem("5")), null, 4)
+            alert(b)
+            break;
+        case 7:
+            b=JSON.stringify(JSON.parse(localStorage.getItem("6")), null, 4)
+            alert(b)
+            break;
+        case 8:
+            b=JSON.stringify(JSON.parse(localStorage.getItem("7")), null, 4)
+            alert(b)
+            break;
+        case 9:
+            b=JSON.stringify(JSON.parse(localStorage.getItem("8")), null, 4)
+            alert(b)
+            break;
+        case 10:
+            b=JSON.stringify(JSON.parse(localStorage.getItem("9")), null, 4)
+            alert(b)
+            break;
+        default:
+            alert("Não existe esse compromisso");
+            break;
+    }
+};
+
+function EXCLUIR_1_COMPROMISSO(){
+    perrgunta=+prompt("Deseja apagar qual compromisso?\nDigite o número dele.");
+    switch(pergunta){
+        case 1:
+        localStorage.removeItem("0")
+            break;
+        case 2:
+        localStorage.removeItem("1")
+            break;
+        case 3:
+        localStorage.removeItem("2")
+            break;
+        case 4:
+        localStorage.removeItem("3")
+            break;
+        case 5:
+        localStorage.removeItem("4")
+            break;
+        case 6:
+        localStorage.removeItem("5")
+            break;
+        case 7:
+        localStorage.removeItem("6")
+            break;
+        case 8:
+        localStorage.removeItem("7")
+            break;
+        case 9:
+        localStorage.removeItem("8")
+            break;
+        case 10:
+        localStorage.removeItem("9")
+            break;
+        default:
+        alert("Não existe esse compromisso");
+            break;
+    }
+    alert("Compromisso apagado com sucesso.")
+};
+
+function DELETAR_TUDO(){
+    localStorage.clear()
+    alert("Tudo apagado com sucesso.")
+};
+
+TUDO()
+</script>
